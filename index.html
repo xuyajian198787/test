@@ -1,0 +1,57 @@
+<!DOCTYPE html> <!--声明HTML文档类型为HTML5-->
+<html lang="zh-CN"> <!--html是HTML页面的根元素,lang="zh-CN"声明网页语言,关联搜索引擎-->
+    <head> <!--定义HTML文档的开头部分,内容不会在网页窗口显示-->
+        <meta chatset="utf-8"> <!--对于中文网页需,声明编码为uft-8。有些浏览器默认GBK编码,需要设置<meta charset="gbk">-->
+        <meta name="viewport" content="width=device-width, initial-scale=1"> <!--响应式设计，针对移动页面优化-->
+        <link rel="shortcut icon" type="image/ico" href="images/wifi.png"> <!--定义HTML网页图标-->
+        <title>科技与麦田</title> <!--定义网页标题-->
+        <link href="./dist/css/layui.css" rel="stylesheet"> 
+        <script src="echarts/dist/echarts.js"></script>
+        <!--定义CSS样式-->
+    </head>
+    <body> <!--定义了文档的主体部分，显示在网页窗口-->
+      <div class="layui-form">
+        <div class="layui-form-item">
+          <input type="checkbox" name="BBB" value="1" lay-skin="tag">
+          <div lay-checkbox>
+            <i class="layui-icon layui-icon-heart"></i> 标题模板</span>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <input type="checkbox" name="CCC" value="2" lay-skin="switch">
+          <div lay-checkbox>
+            <i class="layui-icon layui-icon-moon"></i> | 
+            <i class="layui-icon layui-icon-light"></i>
+          </div>
+        </div>
+      </div>
+        <script src="./dist/layui.js"></script>
+        <script type="text/javascript"></script>
+        <script>
+            layui.use(function(){
+              var form = layui.form;
+              var layer = layui.layer;
+              // radio 事件
+              form.on('switch(p)', function(data){
+                var elem = data.elem; // 获得 radio 原始 DOM 对象
+                var checked = elem.checked; // 获得 radio 选中状态
+                var value = elem.value; // 获得 radio 值
+                var othis = data.othis; // 获得 radio 元素被替换后的 jQuery 对象
+                
+                layer.msg(['value: '+ value, 'checked: '+ checked].join('<br>'));
+              });
+              // 通过表单提交事件，演示 radio 不同状态下的字段结果
+              form.on('submit(submit)', function(data){
+                var field = data.field; // 获取表单字段值
+                // 显示填写结果，仅作演示用
+                layer.alert(JSON.stringify(field), {
+                  title: '当前填写的字段值'
+                });
+                // 此处可执行 Ajax 等操作
+                // …
+                return false; // 阻止默认 form 跳转
+              });
+            });
+            </script>
+    </body>
+</html>
